@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fazer Orçamento</title>
+
+<style>
+
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+
+  background: linear-gradient(135deg, #0d1b2a, #1b263b, #1f4068);
+
+ 
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+header{
+text-align:center;
+padding:30px;
+font-size:28px;
+background-color:#08121c;
+}
+
+.container{
+width:400px;
+margin:50px auto;
+background:#132a44;
+padding:30px;
+border-radius:10px;
+}
+
+input, textarea, select{
+width:100%;
+padding:10px;
+margin-top:10px;
+margin-bottom:20px;
+border:none;
+border-radius:5px;
+box-sizing:border-box;
+font-size:16px;
+}
+
+textarea{
+resize:none;
+height:100px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:cyan;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#00bcd4;
+}
+
+
+.btn-voltar {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  background: white;
+  color: #0d1b2a;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    top: 114px;   /* ajusta altura abaixo do header */
+      left: 40px;  /* mais para a esquerda */
+
+}
+.btn-voltar:hover {
+  background: #00b4d8;
+  color: white;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 600px){
+
+  header{
+    font-size:22px;
+    padding:20px;
+  }
+
+  .container{
+  width:400px;
+  max-width:90%;
+  margin:90px auto 50px auto; /* espaço maior em cima */
+  background:#132a44;
+  padding:30px;
+  border-radius:10px;
+}
+
+  .btn-voltar{
+    left:15px;
+    top:90px;
+    padding:8px 14px;
+    font-size:14px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+ <a href="index.html" class="btn-voltar">← Voltar</a>
+
+<header>Fazer Orçamento</header>
+
+<div class="container">
+
+<form onsubmit="enviarWhats(event)">
+
+<label>Nome</label>
+<input id="nome" type="text" required>
+
+<label>Telefone</label>
+<input id="telefone" type="text" required>
+
+<label>Tipo de Serviço</label>
+<select id="servico">
+<option>Piscina</option>
+<option>Eletrônicos</option>
+<option>Manutenção</option>
+<option>Plantio</option>
+</select>
+
+<label>Descrição</label>
+<textarea id="descricao"></textarea>
+
+<button type="submit">Enviar Orçamento</button>
+
+</form>
+
+</div>
+
+<script>
+
+function enviarWhats(event){
+
+event.preventDefault();
+
+var nome = document.getElementById("nome").value;
+var telefone = document.getElementById("telefone").value;
+var servico = document.getElementById("servico").value;
+var descricao = document.getElementById("descricao").value;
+
+var mensagem = `Olá, gostaria de um orçamento.
+
+Nome: ${nome}
+Telefone: ${telefone}
+Serviço: ${servico}
+Descrição: ${descricao}`;
+
+var numero = "5511916361769";
+
+var url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+
+window.open(url, "_blank");
+
+}
+
+</script>
+
+</body>
+</html>
